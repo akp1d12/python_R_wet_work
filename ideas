@@ -1,0 +1,5 @@
+# 1. Based of geo data. Create a map and label institutions with a "zero" food hygiene score
+how to pull data from FSA website
+Input= location
+output = map with restauranrs with 0 hygiene rating
+
