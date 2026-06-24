@@ -1,0 +1,44 @@
+Write a program that will print out the AT content of this DNA sequence. Hint: you can use normal mathematical symbols like add (+), subtract (-), multiply (*), divide (/) and parentheses to carry out calculations on numbers in Python.
+
+dna = "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
+a_count = dna.count("A")
+t_count = dna.count("T")
+seq_length = len(dna)
+at_perc = (((a_count + t_count) / seq_length) * 100)
+print(at_count)
+EXAMPLE OUTPUT::::68.51851851851852
+#####################################################################################################
+
+Write a program that will print the complement of this sequence. (Not the reverse complement!)
+dna = "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
+nuc_comp_dict = {"A": "T",
+                "T": "A",
+                "C": "G",
+                "G": "C"}
+comp = []
+for base in dna:
+    complement = nuc_comp_dict[base]
+    comp.append(complement)
+
+print("".join(comp))
+EXAMPLE OUTPUT::::TGACTAGCTAATGCATATCATAAACGATAGTATGTATATATAGCTACGCAAGTA
+#alt way
+#comp =""
+#for base in dna:
+#    complement = nuc_comp_dict[base]
+#    comp += complement
+#print(comp)
+
+#####################################################################################################
+`ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT`
+The sequence contains a recognition site for the _EcoRI_ restriction enzyme, which cuts at the motif `G*AATTC` (the position of the cut is indicated by an asterisk). Write a program which will calculate the size of the two fragments that will be produced when the DNA sequence is digested with _EcoRI_.
+dna = "ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
+res_site = dna.find("GAATTC") + 1
+frag1 = dna[0:res_site]
+frag2 = dna[res_site:]
+print("length of fragment 1 is " + str(len(frag1)) + " and the length of fragment 2 is " + str(len(frag2)))
+print(frag1)
+print(frag2)
+EXAMPLE_OUTPUT::::::::::length of fragment 1 is 22 and the length of fragment 2 is 33
+ACTGATCGATTACGTATAGTAG
+AATTCTATCATACATATATATCGATGCGTTCAT
