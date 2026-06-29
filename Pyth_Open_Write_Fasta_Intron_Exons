@@ -1,0 +1,35 @@
+#edit the gdna txt so the exons (start to position 63/position 91 till the end)
+gdna_txt = open("genomic_dna.txt").read()
+exon_1 = gdna_txt[0:64]
+intron = gdna_txt[64:91]
+exon_2 = gdna_txt[91:]
+
+output = open("genomic_dna_2.txt", "w")
+output.write(exon_1 + "\n" + exon_2)
+output.close
+
+#gdna text
+#ATCGATCGATCGATCGACTGACTAGTCATAGCTATGCATGTAGCTACTCGATCGATCGATCGATCGATCGATCGATCGATCGATCATGCTATCATCGATCGATATCGATGCATCGACTACTAT
+###########################################################
+
+
+#Write a program that will create a FASTA file for the following three sequences – 
+#make sure that all sequences are in upper case and only contain the bases A, T, G and C.
+#Sequence header	Sequence
+#ABC123	ATCGTACGATCGATCGATCGCTAGACGTATCG
+#DEF456	actgatcgacgatcgatcgatcacgact
+#HIJ789	ACTGAC-ACTGT--ACTGTA----CATGTG
+
+header_A = "ABC123"
+header_D = "DEF456"
+header_H = "HIJ789"
+
+seq_1 = "ATCGTACGATCGATCGATCGCTAGACGTATCG"
+seq_2 = "actgatcgacgatcgatcgatcacgact"
+seq_3 = "ACTGAC-ACTGT--ACTGTA----CATGTG"
+
+output_2 = open(header_A + header_D + header_H + ".fasta", "w")
+output_2.write(">" + header_A + "\n" + seq_1 + "\n\n"
+               ">" + header_D + "\n" + seq_2.upper() + "\n\n"
+               ">" + header_H + "\n" + seq_3.replace("-", "") + "\n\n")
+output_2.close()
