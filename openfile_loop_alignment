@@ -1,0 +1,24 @@
+# genomic_dna2.txt is a sequence file and looks like "ACTGACTAGCTATG...."
+# exons.txt contains start/stop positions of exons liike "5,58..."
+gdna = open("genomic_dna2.txt").read()
+exon_counter = 1
+for line in open("exons.txt"):
+    exons = line.strip("\n").split(",")
+    start =exons[0]
+    stop = exons[1]
+    length = int(stop) - int(start)
+    print("exon " + str(exon_counter) + " is " + str(length) +" bp long")
+    exon_counter += 1
+    print("exon sequence is " + gdna[int(start):int(stop)])
+
+# output
+exon 1 is 53 bp long
+exon sequence is CGTACCGTCGACGATGCTACGATCGTCGATCGTAGTCGATCATCGATCGATCG
+exon 2 is 61 bp long
+exon sequence is CGATCGATCGATATCGATCGATATCATCGATGCATCGATCATCGATCGATCGATCGATCGA
+exon 3 is 86 bp long
+exon sequence is CGATCGATCGATCGTAGCTAGCTAGCTAGATCGATCATCATCGTAGCTAGCTCGACTAGCTACGTACGATCGATGCATCGATCGTA
+exon 4 is 58 bp long
+exon sequence is CGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGTAGCTAGCTACGATCG
+
+##############################################################################################
