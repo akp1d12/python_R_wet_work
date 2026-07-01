@@ -1,0 +1,55 @@
+#data.csv = Drosophila melanogaster,atatatatatcgcgtatatatacgactatatgcattaattatagcatatcgatatatatatcgatattatatcgcattatacgcgcgtaattatatcgcgtaattacga,kdy647,264
+Drosophila melanogaster,actgtgacgtgtactgtacgactatcgatacgtagtactgatcgctactgtaatgcatccatgctgacgtatctaagt,jdg766,185
+Drosophila simulans,atcgatcatgtcgatcgatgatgcatccgactatcgtcgatcgtgatcgatcgatcgatcatcgatcgatgtcgatcatgtcgatatcgt,kdy533,485
+Drosophila yakuba,cgcgcgctcgcgcatacggcctaatgcgcgcgctagcgatgc,hdt739,85
+Drosophila ananassae,ttacgatcgatcgatcgatcgatcgtcgatcgtcgatgctacatcgatcatcatcggattagtcacatcgatcgatcatcgactgatcgtcgatcgtagatgctgacatcgatagca,hdu045,356
+Drosophila ananassae,gcatcgatcgatcgcggcgcatcgatcgcgatcatcgatcatacgcgtcatatctatacgtcactgccgcgcgtatctacgcgatgactagctagact,teg436,222
+
+for line in open("data.csv"):
+    fields = line.strip("\n").split(",")
+    species = fields[0]
+    seq = fields[1]
+    gene = fields[2]
+    xpr = fields[3]
+    at_cont = (seq.count("a") + seq.count("t"))/ len(seq)
+    
+    if species.endswith("melanogaster") or species.endswith("simulans"):
+        print(gene + " is found in D. melanogaster or D. simulans")
+    
+    if len(seq) >= 90 and len(seq) <= 110:
+        print(gene + " is between 90 - 110 bases in length" )
+    
+    if at_cont >= 0.5 and int(xpr) >= 200:
+        print(gene + " has an at content higher than 50% and an expression level over 200")
+
+    if species != "Drosophila melanogaster" or species != "Drosophila simulans" and gene.startswith("k") or gene.startswith("h"):
+        print(gene + " not found in D. melanogaster or D. simulans and begins with k or h")
+
+    if at_cont < 0.45:
+        print(gene + " : has LOW AT composition  " + str(at_cont))
+    elif at_cont >= 0.45 and at_cont < 0.65:
+        print(gene + " : has MODERATE AT composition " + str(at_cont))
+    elif at_cont >= 0.65:
+        print(gene + " : has HIGH AT composition  " + str(at_cont))
+
+#output
+kdy647 is found in D. melanogaster or D. simulans
+kdy647 is between 90 - 110 bases in length
+kdy647 has an at content higher than 50% and an expression level over 200
+kdy647 not found in D. melanogaster or D. simulans and begins with k or h
+kdy647 : has HIGH AT composition  0.7247706422018348
+jdg766 is found in D. melanogaster or D. simulans
+jdg766 : has MODERATE AT composition 0.5641025641025641
+kdy533 is found in D. melanogaster or D. simulans
+kdy533 is between 90 - 110 bases in length
+kdy533 has an at content higher than 50% and an expression level over 200
+kdy533 not found in D. melanogaster or D. simulans and begins with k or h
+kdy533 : has MODERATE AT composition 0.5333333333333333
+hdt739 not found in D. melanogaster or D. simulans and begins with k or h
+hdt739 : has LOW AT composition  0.2857142857142857
+hdu045 has an at content higher than 50% and an expression level over 200
+hdu045 not found in D. melanogaster or D. simulans and begins with k or h
+hdu045 : has MODERATE AT composition 0.5299145299145299
+teg436 is between 90 - 110 bases in length
+teg436 not found in D. melanogaster or D. simulans and begins with k or h
+teg436 : has MODERATE AT composition 0.45918367346938777
