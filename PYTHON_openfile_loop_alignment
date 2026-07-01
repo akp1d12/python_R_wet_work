@@ -22,3 +22,31 @@ exon 4 is 58 bp long
 exon sequence is CGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGTAGCTAGCTACGATCG
 
 ##############################################################################################
+#3 sequences are aligned. How to print them base by base?
+
+alignment = ['atgctcgatcgctag',
+             'aag-tcgctcgct--',
+             'atcctc--tcgcggg']
+
+seq_1 = alignment[0]
+seq_2 = alignment[1]
+seq_3 = alignment[2]
+
+for columns in range(len(seq_1)):
+    print("column " + str(columns + 1) + ":  " + seq_1[columns] + seq_2[columns] + seq_3[columns])
+# output
+column 1:  aaa
+column 2:  tat
+column 3:  ggc
+column 4:  c-c
+column 5:  ttt
+column 6:  ccc
+column 7:  gg-
+column 8:  ac-
+column 9:  ttt
+column 10:  ccc
+column 11:  ggg
+column 12:  ccc
+column 13:  ttg
+column 14:  a-g
+column 15:  g-g
